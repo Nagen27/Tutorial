@@ -9,13 +9,10 @@ struct CarType{
 };
 CarType * newNode(string carModel)
 {
-	CarType * temp ; //= newNode;
+	CarType *temp ; 
 	temp->carModel = carModel;
 	temp->carPrice = carPrice;
-	temp->next = NULL;
-	
-	/*cout<<"Enter the name and of car #"<<i<<endl;
-	cin>>a[i].carModel>>a[i].carPrice;	*/	
+	temp->right = NULL;
 	
 	return temp;
 }
