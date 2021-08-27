@@ -36,6 +36,28 @@ CarType * addCar(CarType * current, string carModel, float carPrice)
 		return current;
 }
 
+CarType * deleteCar(CarType * current, string carModel, float carPrice)
+{
+	CarType * newRecord = new CarType();
+	
+	if(current == NULL)
+	{
+			
+	}
+	else if(current -> next == current)
+	{
+		delete current;
+		current = NULL;
+	}
+	else
+	{
+		current -> next = current -> next -> next;
+		newRecord = current -> next;
+		delete newRecord;
+	}
+	return current;
+}
+
 CarType * nextCar(CarType * current, string carModel, float carPrice)
 {
 	if(current == NULL)
@@ -49,6 +71,7 @@ CarType * nextCar(CarType * current, string carModel, float carPrice)
 	return current;
 }
 
+
 int main ()
 {
 	int number;
@@ -58,9 +81,9 @@ int main ()
 	
 	do
 	{
-		cout<<"Please choose what you want to do:"<<endl;
+		cout<<"\nPlease choose what you want to do:"<<endl;
 		cout<<"1. Add a car."<<endl;
-		cout<<"2. Delet the next car."<<endl;
+		cout<<"2. Delete the next car."<<endl;
 		cout<<"3. Go to the next car."<<endl;
 		cout<<"0. Exit this program."<<endl;
 		cout<<"Enter your choice:"<<endl;
@@ -74,7 +97,7 @@ int main ()
 		}
 		else if(number == 2)
 		{
-			
+			current = deleteCar(current,carModel,carPrice);
 		}
 		else if(number == 3)
 		{
@@ -86,8 +109,10 @@ int main ()
 		}
 		if(current!=NULL)
 		{
-			cout<<"current name and price" << current -> carModel<<"\tRM"<<current->carPrice;
+			cout<<"Current name and price : " << current -> carModel<<"\tRM"<<current->carPrice;
 		}
 		
 	}while(number!=0);
+	
+	return 0;
 }
