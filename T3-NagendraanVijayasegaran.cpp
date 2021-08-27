@@ -7,7 +7,7 @@ struct CarType{
 	float carPrice;
 	CarType * next;
 };
-CarType * newNode(CarType * current,string carModel,float carPrice)
+CarType * newNode(string carModel,float carPrice)
 {
 	CarType * temp = new CarType(); 
 	temp->carModel = carModel;
@@ -22,7 +22,7 @@ CarType * addCar(CarType * current, string carModel, float carPrice)
 	
 	if(current == NULL)
 	{
-		//current = newNode(carModel ,carPrice);
+		current = newNode(carModel ,carPrice);
 		current -> next = current;
 	}
 	else
@@ -35,11 +35,26 @@ CarType * addCar(CarType * current, string carModel, float carPrice)
 	}
 		return current;
 }
+
+CarType * nextCar(CarType * current, string carModel, float carPrice)
+{
+	if(current == NULL)
+	{
+		
+	}
+	else
+	{
+		current = current -> next ;
+	}
+	return current;
+}
+
 int main ()
 {
 	int number;
-	
-	struct CarType a;
+	string carModel;
+	float carPrice;
+	struct CarType * current = NULL;
 	
 	do
 	{
@@ -54,19 +69,24 @@ int main ()
 		if(number == 1)
 		{
 			cout<<"Please enter the name and price of the new car:";
-			cin>>a.carModel>>a.carPrice;
+			cin>>carModel>>carPrice;
+			current = addCar(current,carModel,carPrice);
 		}
 		else if(number == 2)
 		{
-		
+			
 		}
 		else if(number == 3)
 		{
-	
+			current = nextCar(current,carModel,carPrice);
 		}
 		else 
 		{
 		
+		}
+		if(current!=NULL)
+		{
+			cout<<"current name and price" << current -> carModel<<"\tRM"<<current->carPrice;
 		}
 		
 	}while(number!=0);
