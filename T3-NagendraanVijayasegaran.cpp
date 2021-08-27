@@ -9,12 +9,31 @@ struct CarType{
 };
 CarType * newNode(string carModel)
 {
-	CarType *temp ; 
+	CarType * temp =newNode(); 
 	temp->carModel = carModel;
 	temp->carPrice = carPrice;
-	temp->right = NULL;
-	
+	temp->next = NULL;
 	return temp;
+}
+
+CarType * addCar(CarType * current, string carModel, float carPrice)
+{
+	CarType * newRecord = new record();
+	
+	if(current == NULL)
+	{
+		current = newNode(carModel , carPrice);
+		current -> next = current;
+	}
+	else
+	{
+	
+		newRecord -> carModel = carModel ;
+		newRecord -> carPrice = carPrice; 
+		newRecord -> next = current -> next;
+		current -> next = newRecord;
+	}
+		return current;
 }
 int main ()
 {
